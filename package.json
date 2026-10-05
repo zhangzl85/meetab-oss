@@ -1,0 +1,11 @@
+{
+  "name": "meetab-oss",
+  "version": "1.0.0",
+  "description": "米贴开源版：纯前端搜索页 + 捷径页，数据存本地浏览器，零后端、零密钥。",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  }
+}
