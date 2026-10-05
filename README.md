@@ -6,7 +6,7 @@
 
 ## 在线体验
 
-- **开源版在线 Demo**（本仓库静态构建，纯前端、数据存你自己的浏览器）：`https://<你的GitHub用户名>.github.io/meetab-oss/`
+- **开源版在线 Demo**（本仓库静态构建，纯前端、数据存你自己的浏览器）：[zhangzl85.github.io/meetab-oss](https://zhangzl85.github.io/meetab-oss/)
 - **完整版 · 米贴在线服务** [`meetab.cn`](https://www.meetab.cn/)：含账号体系、云端多设备同步、更多工具与浏览器扩展能力。**注意：此为完整版，并非本开源构建**——开源版仅含「搜索页 + 捷径页」两块基础功能。
 
 ## 功能
