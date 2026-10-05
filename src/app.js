@@ -47,12 +47,10 @@ function boot() {
   const closeBtn = document.getElementById('overlayClose');
   if (closeBtn) closeBtn.onclick = () => setOverlay(false);
 
-  // 8b. 浏览器扩展弹窗（仿米贴）
+  // 8b. 浏览器扩展弹窗（仿米贴）—— openExt/closeExt 定义在模块级，供 Esc 处理器复用
   const extBtn = document.getElementById('extBtn');
   const extModal = document.getElementById('extModal');
   const extClose = document.getElementById('extClose');
-  const openExt = () => { if (extModal) { extModal.hidden = false; requestAnimationFrame(() => extModal.classList.add('open')); } };
-  const closeExt = () => { if (extModal) { extModal.classList.remove('open'); extModal.hidden = true; } };
   if (extBtn) extBtn.onclick = openExt;
   if (extClose) extClose.onclick = closeExt;
   if (extModal) extModal.addEventListener('click', (e) => { if (e.target === extModal) closeExt(); });
@@ -69,6 +67,16 @@ function boot() {
   grid.addEventListener('scroll', updFade);
   window.addEventListener('resize', updFade);
   updFade();
+}
+
+/* ---------- 浏览器扩展弹窗 ---------- */
+function openExt() {
+  const m = document.getElementById('extModal');
+  if (m) { m.hidden = false; requestAnimationFrame(() => m.classList.add('open')); }
+}
+function closeExt() {
+  const m = document.getElementById('extModal');
+  if (m) { m.classList.remove('open'); m.hidden = true; }
 }
 
 /* ---------- 两屏翻页 ---------- */
@@ -125,7 +133,8 @@ function bindPageFlip() {
   // 键盘：Esc 返回 / ↓ 在搜索框打开捷径页
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (extModal && !extModal.hidden) { closeExt(); return; }
+      const em = document.getElementById('extModal');
+      if (em && !em.hidden) { closeExt(); return; }
       if (overlayOpen) setOverlay(false);
       if (document.body.classList.contains('settings-open')) document.getElementById('settingsClose')?.click();
       return;
